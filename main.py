@@ -41,7 +41,9 @@ while True:
 
             #print("the new todos",todos)
     elif 'complete' in user_action:
-        num = int(input("Enter the task number to complete:"))
+        #num = int(input("Enter the task number to complete:"))'
+
+        num = int(user_action[9:])
         del_num = num - 1
         with open("./todo_list.txt",'r') as file:
             todos = file.readlines()

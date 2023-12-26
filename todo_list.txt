@@ -1,9 +1,7 @@
 run
-swim
-jog in the park
+swim 100 mts 
 football
 clean
 run
 race
 run
-test app
