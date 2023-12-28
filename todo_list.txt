@@ -1,7 +1,5 @@
 watch a movie 
 swim 100 mts 
-football
-clean
 run
 race
 run

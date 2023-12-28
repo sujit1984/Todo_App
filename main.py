@@ -45,15 +45,17 @@ while True:
             continue
 
     elif user_action.startswith('complete'):
-        #num = int(input("Enter the task number to complete:"))'
-
-        num = int(user_action[9:])
-        del_num = num - 1
-        with open("./todo_list.txt",'r') as file:
-            todos = file.readlines()
-        todos.pop(del_num)
-        with open("./todo_list.txt",'w') as file:
-            todos = file.writelines(todos)
+        try:
+            num = int(user_action[9:])
+            del_num = num - 1
+            with open("./todo_list.txt",'r') as file:
+                todos = file.readlines()
+            todos.pop(del_num)
+            with open("./todo_list.txt",'w') as file:
+                todos = file.writelines(todos)
+        except IndexError:
+            print(f"There is no task with the number {num}")
+            continue
 
     elif user_action.startswith('exit'):
         break
