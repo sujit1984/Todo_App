@@ -4,18 +4,18 @@ while True:
     user_action = input("Type add or show or edit or complete or exit ")
     user_action = user_action.strip()
 
-    if 'add' in user_action:
+    if user_action.startswith('add') or user_action.startswith('new'):
             #todo = input("Enter a todo:") + '\n'
             todo = user_action[4:]
             file = open('./todo_list.txt','r')
             todos = file.readlines()
             file.close()
 
-            todos.append(todo)
+            todos.append(todo + '\n')
             file = open('./todo_list.txt','w')
             file.writelines(todos)
             file.close()
-    elif 'show'in user_action:
+    elif user_action.startswith('show'):
             #file = open("./todo_list.txt",'r')
         with open("./todo_list.txt",'r') as file:
             todos = file.readlines()
@@ -25,22 +25,26 @@ while True:
             item=item.strip('\n')
             row = f"{index+1}-{item}"
             print(row)
-    elif 'edit' in user_action:
-        number = int(user_action[5:])
-        number = number - 1
+    elif user_action.startswith('edit'):
+        try:
+            number = int(user_action[5:])
+            number = number - 1
 
-        with open("./todo_list.txt",'r') as file:
-            todos = file.readlines()
-            #print("Todos before the modification",todos)
+            with open("./todo_list.txt",'r') as file:
+                todos = file.readlines()
+                #print("Todos before the modification",todos)
 
-        new_task = input('Enter the new task:')
-        todos[number] = new_task + '\n'
+            new_task = input('Enter the new task:')
+            todos[number] = new_task + '\n'
 
-        with open("./todo_list.txt",'w') as file:
-            todos = file.writelines(todos)
+            with open("./todo_list.txt",'w') as file:
+                todos = file.writelines(todos)
 
-            #print("the new todos",todos)
-    elif 'complete' in user_action:
+        except ValueError:
+            print("Your command is not valid:")
+            continue
+
+    elif user_action.startswith('complete'):
         #num = int(input("Enter the task number to complete:"))'
 
         num = int(user_action[9:])
@@ -51,7 +55,7 @@ while True:
         with open("./todo_list.txt",'w') as file:
             todos = file.writelines(todos)
 
-    elif 'exit' in user_action:
+    elif user_action.startswith('exit'):
         break
 
     else:
