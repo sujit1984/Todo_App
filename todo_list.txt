@@ -1,7 +1,8 @@
 watch a movie 
 swim 100 mts 
-run
 race
-run
+run 5 kms
 run a triathlon
 pray
+board the train
+watch television
