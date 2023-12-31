@@ -1,7 +1,11 @@
-def get_todo_tasks():
-    with open("./todo_list.txt", 'r') as file:
-        todos = file.readlines()
-    return todos
+def get_todo_tasks(filepath):
+    with open(filepath, 'r') as local_file:
+        local_todos = local_file.readlines()
+    return local_todos
+
+def set_todo_tasks(filepath, todos_arg):
+    with open(filepath, 'w') as local_file:
+        local_file.writelines(todos_arg)
 
 # def set_todo_tasks():
 #     with open("./todo_list.txt", 'w') as file:
@@ -14,15 +18,14 @@ while True:
     if user_action.startswith('add') or user_action.startswith('new'):
             #todo = input("Enter a todo:") + '\n'
             todo = user_action[4:]
-            todos = get_todo_tasks()
+            todos = get_todo_tasks("todo_list.txt")
 
             todos.append(todo + '\n')
-            file = open('./todo_list.txt','w')
-            file.writelines(todos)
-            file.close()
+            set_todo_tasks("todo_list.txt", todos)
+
     elif user_action.startswith('show'):
             #file = open("./todo_list.txt",'r')
-        todos= get_todo_tasks()
+        todos= get_todo_tasks("todo_list.txt")
             #file.close()
             #new_todos = [item.strip('\n') for item in todos]
         for index, item in enumerate(todos):
@@ -34,14 +37,13 @@ while True:
             number = int(user_action[5:])
             number = number - 1
 
-            todos = get_todo_tasks()
+            todos = get_todo_tasks("todo_list.txt")
                 #print("Todos before the modification",todos)
 
             new_task = input('Enter the new task:')
             todos[number] = new_task + '\n'
 
-            with open("./todo_list.txt",'w') as file:
-                todos = file.writelines(todos)
+            set_todo_tasks("todo_list.txt",todos)
 
         except ValueError:
             print("Your command is not valid:")
@@ -51,10 +53,10 @@ while True:
         try:
             num = int(user_action[9:])
             del_num = num - 1
-            get_todo_tasks()
+            get_todo_tasks("todo_list.txt")
             todos.pop(del_num)
-            with open("./todo_list.txt",'w') as file:
-                todos = file.writelines(todos)
+            set_todo_tasks("todo_list.txt",todos)
+
         except IndexError:
             print(f"There is no task with the number {num}")
             continue

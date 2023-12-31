@@ -1,8 +1,7 @@
 watch a movie 
-swim 100 mts 
-race
+swim 50 mts
+race fast
 run 5 kms
 run a triathlon
-pray
 board the train
-watch television
+this is the 8th task
