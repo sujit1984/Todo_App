@@ -1,7 +1,6 @@
 watch a movie 
-swim 50 mts
-race fast
-run 5 kms
-run a triathlon
-board the train
+watch the movie - Mission Impossible
+race for 5 kms 
 this is the 8th task
+swim 100 mts
+Study Data Structures
