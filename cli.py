@@ -1,6 +1,10 @@
 from methods import get_todo_tasks, set_todo_tasks
+import time
+
+now = time.strftime("%b %d, %Y %H:%M:%S")
 
 while True:
+    print("The time is: ", now)
     user_action = input("Type add or show or edit or complete or exit ")
     user_action = user_action.strip()
 
