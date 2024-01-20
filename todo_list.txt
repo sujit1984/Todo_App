@@ -1,9 +1,8 @@
-watch a good movie
-race for 10 kms
-this is the 8th task
-swim 100 mts
-Study Data Structures
-Python code for 30 mins
-this is the 1st task
-this is the 2nd task
-This is the 3rd task
+1st task
+2nd task
+3rd task
+4th task
+last task
+6th task
+7th task
+Eighth task
