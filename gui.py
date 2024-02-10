@@ -6,11 +6,16 @@ label = sg.Text("Enter the Task")
 input_box = sg.InputText(tooltip="Enter the todo task", key = "Task")
 add_button = sg.Button("Add")
 list_box = sg.Listbox(values=get_todo_tasks(), key="Task_List",
-                      enable_events=True, size=[45, 10])
+                      enable_events=True, size=[60, 10])
 edit_button = sg.Button("Edit")
+complete_button=sg.Button("Complete Task")
+exit_button=sg.Button("Exit")
 
 window = sg.Window("To Do App",
-                   layout=[[label],[input_box, add_button],[list_box, edit_button]],
+                   layout=[[label],
+                           [input_box, add_button],
+                           [list_box, edit_button, complete_button],
+                            [exit_button]],
                    font=('Helvetica', 16))
 
 while True:
@@ -25,6 +30,7 @@ while True:
             todos.append(new_task)
             set_todo_tasks(todos)
             window['Task_List'].update(values=todos)
+
         case "Edit":
             task_to_edit = values["Task_List"][0]
             new_task = values["Task"]
@@ -33,8 +39,23 @@ while True:
             tasks[index] = new_task
             set_todo_tasks(tasks)
             window['Task_List'].update(values=tasks)
+
+        case "Complete Task":
+            task_to_complete = values["Task_List"][0]
+            #new_task = values["Task"]
+            tasks = get_todo_tasks()
+            tasks.remove(task_to_complete)
+            #tasks[index] = new_task
+            set_todo_tasks(tasks)
+            window['Task_List'].update(values=tasks)
+            window['Task'].update(value='')
+
         case "Task_List":
             window['Task'].update(value=values['Task_List'][0])
+
+        case "Exit":
+            break
+
         case sg.WIN_CLOSED:
             break
 

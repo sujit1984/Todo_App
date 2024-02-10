@@ -1,8 +1,6 @@
-1st task
+1st Task
 2nd task
-3rd task
 4th task
-last task
-6th task
-7th task
 Eighth task
+9th Task
+10th task
