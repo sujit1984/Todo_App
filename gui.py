@@ -1,6 +1,11 @@
 from methods import get_todo_tasks, set_todo_tasks
 import PySimpleGUI as sg
 import time
+import os
+
+if not os.path.exists("todo_list.txt"):
+    with open("todo_list.txt","")as file:
+        pass
 
 sg.theme("White")
 clock = sg.Text('', key='clock')
